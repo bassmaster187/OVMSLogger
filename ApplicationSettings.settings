@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OVMS" GeneratedClassName="ApplicationSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ExceptionlessServerUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://ds718plus:5002</Value>
+    </Setting>
+    <Setting Name="ExceptionlessApiKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">WA0Y7kBPrfI4yXwYPzSmB4NQrycRj9ooFh1Y5sKB</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

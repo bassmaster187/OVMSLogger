@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TeslaLogger;
+using Exceptionless;
 
 namespace OVMS
 {
@@ -388,10 +389,14 @@ VALUES(
                 if (mex.ErrorCode == -2147467259) // e.g. Duplicate entry '2022-02-10 23:08:20-2' for key 'PRIMARY'
                     car.Log("Can row already exists");
                 else
+                {
                     car.Log(mex.ToString());
+                    car.SendException2Exceptionless(mex);
+                }
             }
             catch (Exception ex)
             {
+                car.SendException2Exceptionless(ex);
                 car.Log(ex.ToString());
             }
         }
@@ -546,7 +551,7 @@ WHERE
                                 }
                                 catch (Exception ex)
                                 {
-                                    // ex.ToExceptionless().Submit();
+                                    ex.ToExceptionless().Submit();
                                     Logfile.Log(ex.ToString());
                                 }
                             }, TaskScheduler.Default);
@@ -556,7 +561,7 @@ WHERE
             }
             catch (Exception ex)
             {
-                // ex.ToExceptionless().Submit();
+                ex.ToExceptionless().Submit();
                 Logfile.Log(ex.ToString());
             }
         }

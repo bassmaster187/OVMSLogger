@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Exceptionless;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,17 +15,30 @@ namespace OVMS
         {
             try
             {
+                ExceptionlessClient.Default.Startup("WA0Y7kBPrfI4yXwYPzSmB4NQrycRj9ooFh1Y5sKB");
+                ExceptionlessClient.Default.Configuration.ServerUrl = ApplicationSettings.Default.ExceptionlessServerUrl;
+                ExceptionlessClient.Default.Configuration.SetVersion(Assembly.GetExecutingAssembly().GetName().Version);
+
+                ExceptionlessClient.Default.SubmitLog("Start " + Assembly.GetExecutingAssembly().GetName().Version);
+
 
                 var dt = DBHelper.GetAllOVMSCars();
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    int dbcarid = (Int32)dr["id"];
-                    string name = dr["tesla_name"].ToString();
-                    string password = dr["tesla_password"].ToString();
-                    string CarId = dr["tesla_token"].ToString().Substring(5);
+                    try
+                    {
+                        int dbcarid = (Int32)dr["id"];
+                        string name = dr["tesla_name"].ToString();
+                        string password = dr["tesla_password"].ToString();
+                        string CarId = dr["tesla_token"].ToString().Substring(5);
 
-                    var c = new Car(dbcarid, name, password, CarId);
+                        var c = new Car(dbcarid, name, password, CarId);
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.ToExceptionless().Submit();
+                    }
                 }
 
                 while (true)
@@ -33,6 +48,7 @@ namespace OVMS
             }
             catch (Exception ex)
             {
+                ex.ToExceptionless().Submit();
                 TeslaLogger.Logfile.Log(ex.ToString());
             }
         }

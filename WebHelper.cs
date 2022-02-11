@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Exceptionless;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,9 @@ namespace OVMS
 
         static object lock_auth = new object();
         private static int NominatimCount = 0;
+        internal string OVMSVersion;
+        private string VIN;
+        internal string Cartype;
 
         public WebHelper(Car car, string Username, string Password, string CarId)
         {
@@ -45,7 +49,6 @@ namespace OVMS
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             this.car = car;
-
         }
 
         internal void Auth()
@@ -172,16 +175,23 @@ namespace OVMS
                     {
                         string m_msg = k["m_msg"];
                         var args = m_msg.Split(',');
-                        car.Log("Version: " + args[0]);
-                        car.Log("VIN: " + args[1]);
-                        car.Log("Cartype: " + args[4]);
+                        OVMSVersion = args[0];
+                        VIN = args[1];
+                        Cartype = args[4];
+
+                        car.Log("Version: " + OVMSVersion);
+                        car.Log("VIN: " + VIN);
+                        car.Log("Cartype: " + Cartype);
                         car.Log("Provider: " + args[5]);
+
+                        
                         return;
                     }
                 }
             }
             catch (Exception ex)
             {
+                car.SendException2Exceptionless(ex);
                 car.Log(ex.ToString());
             }
         }
@@ -238,7 +248,7 @@ namespace OVMS
             }
             catch (Exception ex)
             {
-                // ex.ToExceptionless().Submit();
+                ex.ToExceptionless().Submit();
                 Logfile.Log(ex.ToString());
             }
         }
@@ -308,7 +318,7 @@ namespace OVMS
             }
             catch (Exception ex)
             {
-                // ex.ToExceptionless().Submit();
+                ex.ToExceptionless().Submit();
                 Logfile.Log(" Exception in UpdateAllPOIAddresses: " + ex.Message);
             }
 
@@ -345,9 +355,10 @@ namespace OVMS
 
         public bool isDriving(bool forceInsert = false)
         {
+            string resultContent = null;
             try
             {
-                string resultContent = GetLocation();
+                resultContent = GetLocation();
 
                 if (resultContent.Length == 3)
                 {
@@ -394,8 +405,9 @@ namespace OVMS
             }
             catch (Exception ex)
             {
+                car.CreateExceptionlessClient(ex).AddObject(resultContent, "ResultContent").Submit();
                 car.Log(ex.ToString());
-                // System.Threading.Thread.Sleep(30000);
+                System.Threading.Thread.Sleep(30000);
             }
 
             return false;
@@ -403,9 +415,10 @@ namespace OVMS
 
         public bool isCharging()
         {
+            string resultContent = null;
             try
             {
-                string resultContent = GetCharge();
+                resultContent = GetCharge();
 
                 dynamic j = new JavaScriptSerializer().DeserializeObject(resultContent);
                 if (j["chargestate"] == "charging")
@@ -446,6 +459,7 @@ namespace OVMS
             }
             catch (Exception ex)
             {
+                car.CreateExceptionlessClient(ex).AddObject(resultContent, "ResultContent").Submit();
                 car.Log(ex.ToString());
             }
 

@@ -31,10 +31,12 @@ namespace OVMS
 
         Thread thread;
         bool run = true;
+        readonly string carId;
 
         public Car(int CarInDB, string name, string password, string carId)
         {
             this.CarInDB = CarInDB;
+            this.carId = carId;
 
 
             wh = new WebHelper(this, name, password, carId);
@@ -110,12 +112,13 @@ namespace OVMS
             }
             catch (Exception ex)
             {
-                SendException2Exceptionless(ex);
-
                 string temp = ex.ToString();
 
                 if (!temp.Contains("ThreadAbortException"))
+                {
+                    SendException2Exceptionless(ex);
                     Log(temp);
+                }
             }
             finally
             {
@@ -201,11 +204,10 @@ namespace OVMS
 
         internal EventBuilder CreateExceptionlessClient(Exception ex)
         {
-            EventBuilder b = ex.ToExceptionless();/* .SetUserIdentity(TaskerHash)
-                        .AddObject(ModelName, "ModelName")
-                        .AddObject(CarType, "CarType")
-                        .AddObject(CarSpecialType, "CarSpecialType")
-                        .AddObject(TrimBadging, "CarTrimBadging");*/
+            EventBuilder b = ex.ToExceptionless()
+                .SetUserIdentity(this.carId)
+                .AddObject(wh.Cartype, "Cartype")
+                .AddObject(wh.OVMSVersion, "OVMSVersion");
 
             return b;
         }
