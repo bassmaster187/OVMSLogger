@@ -392,7 +392,7 @@ namespace OVMS
 
                     double odometer = Convert.ToDouble(j2["odometer"], Tools.ciEnUS) / 10;
                     int batteryLevel = (int)Convert.ToDouble(j2["soc"], Tools.ciEnUS);
-                    double idealBatteryRangeKm = Convert.ToDouble(j2["idealrange"], Tools.ciEnUS);
+                    double idealBatteryRangeKm = Convert.ToDouble(j2["estimatedrange"], Tools.ciEnUS);
                     double batteryRangeKm = Convert.ToDouble(j2["idealrange"], Tools.ciEnUS);
 
                     car.DbHelper.InsertPos(timestamp, Convert.ToDouble(latitude, Tools.ciEnUS), Convert.ToDouble(longitude, Tools.ciEnUS),
@@ -428,13 +428,15 @@ namespace OVMS
                     timestamp = dt.ToString("yyyy-MM-dd HH:mm:ss", Tools.ciEnUS);
 
                     string battery_level = j["soc"];
+                    double dBattery_level = Convert.ToDouble(battery_level, Tools.ciEnUS);
                     double chargekwh = Convert.ToDouble(j["chargekwh"], Tools.ciEnUS) / 10;
-                    string charge_energy_added = chargekwh.ToString(Tools.ciEnUS);
-                    int charger_power = j["charging"];
-                    string ideal_battery_range_km = j["idealrange"];
+                    double dCharge_energy_added = GetChargeEnergyAdded(chargekwh, dBattery_level);
+                    string charge_energy_added = dCharge_energy_added.ToString(Tools.ciEnUS);
+                    int charger_power = (int)Math.Round(Convert.ToDouble(j["chargepower"]));
+                    string ideal_battery_range_km = j["estimatedrange"];
                     string battery_range_km = j["idealrange"];
                     string linevoltage = j["linevoltage"];
-                    int temperature_outside = Convert.ToInt32(j["temperature_ambient"]);
+                    int temperature_outside = (int)Math.Round(Convert.ToDouble(j["temperature_ambient"], Tools.ciEnUS));
                     double temperature_battery = Convert.ToDouble(j["temperature_battery"], Tools.ciEnUS);
 
                     string chargecurrent = j["chargecurrent"];
@@ -464,6 +466,22 @@ namespace OVMS
             }
 
             return false;
+        }
+
+        private double GetChargeEnergyAdded(double chargekwh, double currentSOC)
+        {
+            if (Cartype == "HIONVFL")
+            {
+                double start_charging_soc = car.DbHelper.start_charging_soc;
+                if (start_charging_soc == 0)
+                    return chargekwh;
+
+                double socDiff = currentSOC - start_charging_soc;
+                double kWhDiff = 28.0 / 100 * socDiff;
+                return kWhDiff;
+            }
+
+            return chargekwh;
         }
 
         public static async Task<string> ReverseGecocodingAsync(Car c, double latitude, double longitude, bool forceGeocoding = false, bool insertGeocodecache = true)

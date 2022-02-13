@@ -132,6 +132,7 @@ namespace OVMS
             {
                 Log("Driving stop");
                 _currentState = CarState.Start;
+                DbHelper.CloseDriveState(DateTime.Now);
             }
             else
             {
@@ -168,6 +169,7 @@ namespace OVMS
             {
                 Log("Start Driving");
                 _currentState = CarState.Drive;
+                DbHelper.StartDriveState(DateTime.Now);
 
             }
             else if (wh.isCharging())
