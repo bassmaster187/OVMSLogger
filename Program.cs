@@ -5,7 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using TeslaLogger;
 
 namespace OVMS
 {
@@ -21,6 +23,9 @@ namespace OVMS
 
                 ExceptionlessClient.Default.SubmitLog("Start " + Assembly.GetExecutingAssembly().GetName().Version);
 
+                TeslaLogger.Logfile.Log("Start OVMSLogger V" + Assembly.GetExecutingAssembly().GetName().Version);
+
+                InitConnectToDB();
 
                 var dt = DBHelper.GetAllOVMSCars();
 
@@ -52,5 +57,34 @@ namespace OVMS
                 TeslaLogger.Logfile.Log(ex.ToString());
             }
         }
+
+        private static void InitConnectToDB()
+        {
+            for (int x = 1; x <= 30; x++) // try 30 times until DB is up and running
+            {
+                try
+                {
+                    Logfile.Log("DB Version: " + DBHelper.GetVersion());
+                    Logfile.Log("Count Pos: " + DBHelper.CountPos()); // test the DBConnection
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("Connection refused")
+                        || ex.Message.Contains("Unable to connect to any of the specified MySQL hosts")
+                        || ex.Message.Contains("Reading from the stream has failed."))
+                    {
+                        Logfile.Log($"Wait for DB ({x}/30): Connection refused.");
+                    }
+                    else
+                    {
+                        ex.ToExceptionless().Submit();
+                        Logfile.Log("DBCONNECTION " + ex.Message);
+                    }
+
+                    Thread.Sleep(15000);
+                }
+            }
+        }        
     }
 }

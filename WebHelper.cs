@@ -432,7 +432,7 @@ namespace OVMS
                     double chargekwh = Convert.ToDouble(j["chargekwh"], Tools.ciEnUS) / 10;
                     double dCharge_energy_added = GetChargeEnergyAdded(chargekwh, dBattery_level);
                     string charge_energy_added = dCharge_energy_added.ToString(Tools.ciEnUS);
-                    int charger_power = (int)Math.Round(Convert.ToDouble(j["chargepower"]));
+                    int charger_power = (int)Math.Round(Convert.ToDouble(j["chargepower"], Tools.ciEnUS));
                     string ideal_battery_range_km = j["estimatedrange"];
                     string battery_range_km = j["idealrange"];
                     string linevoltage = j["linevoltage"];

@@ -903,5 +903,41 @@ VALUES(
                 }
             }
         }
+
+        public static string GetVersion()
+        {
+            using (MySqlConnection con = new MySqlConnection(DBConnectionstring))
+            {
+                con.Open();
+                using (MySqlCommand cmd = new MySqlCommand("SELECT @@version", con))
+                {
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        return dr[0].ToString();
+                    }
+                }
+            }
+
+            return "NULL";
+        }
+
+        public static int CountPos()
+        {
+            using (MySqlConnection con = new MySqlConnection(DBConnectionstring))
+            {
+                con.Open();
+                using (MySqlCommand cmd = new MySqlCommand("Select count(*) from pos", con))
+                {
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.Read())
+                    {
+                        return Convert.ToInt32(dr[0], Tools.ciEnUS);
+                    }
+                }
+            }
+
+            return 0;
+        }
     }
 }
