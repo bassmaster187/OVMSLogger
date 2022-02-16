@@ -136,7 +136,7 @@ namespace OVMS
             }
             else
             {
-                System.Threading.Thread.Sleep(30000);
+                System.Threading.Thread.Sleep(10000);
             }
         }
 

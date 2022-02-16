@@ -51,8 +51,8 @@ namespace OVMS
             double distance = Geofence.GetDistance(t.lng, t.lat, o.lng, o.lat);
             // System.Diagnostics.Debug.WriteLine("Distance: " + distance);
 
-
-            car.Log("Distance: " + distance + " Timespan: " + ts.TotalSeconds + "s");
+            if (ts.TotalSeconds > 0)
+                car.Log("Distance: " + distance + " Timespan: " + ts.TotalSeconds + "s");
 
             if (distance > 200)
             {
