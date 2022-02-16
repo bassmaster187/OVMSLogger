@@ -5,8 +5,11 @@
     <Setting Name="ExceptionlessServerUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://ds718plus:5002</Value>
     </Setting>
-    <Setting Name="ExceptionlessApiKey" Type="System.String" Scope="User">
+    <Setting Name="ExceptionlessApiKey" Type="System.String" Scope="Application">
       <Value Profile="(Default)">WA0Y7kBPrfI4yXwYPzSmB4NQrycRj9ooFh1Y5sKB</Value>
+    </Setting>
+    <Setting Name="ProtocolLogging" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

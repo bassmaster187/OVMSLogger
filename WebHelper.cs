@@ -35,6 +35,7 @@ namespace OVMS
         internal string OVMSVersion;
         private string VIN;
         internal string Cartype;
+        GPSMovementDetector gPSMovementDetector = null;
 
         public WebHelper(Car car, string Username, string Password, string CarId)
         {
@@ -327,30 +328,69 @@ namespace OVMS
 
         internal string GetProtocol()
         {
-            var ret = httpClientForAuthentification.GetAsync("https://ovms.dexters-web.de:6869/api/protocol/" + CarId).Result;
-            var resultContent = ret.Content.ReadAsStringAsync().Result;
-            return resultContent;
+            return GetDataFromServer("https://ovms.dexters-web.de:6869/api/protocol/" + CarId);
         }
 
         internal string GetCharge()
         {
-            var ret = httpClientForAuthentification.GetAsync("https://ovms.dexters-web.de:6869/api/charge/" + CarId).Result;
-            var resultContent = ret.Content.ReadAsStringAsync().Result;
-            return resultContent;
+            return GetDataFromServer("https://ovms.dexters-web.de:6869/api/charge/" + CarId);
         }
 
         internal string GetStatus()
         {
-            var ret = httpClientForAuthentification.GetAsync("https://ovms.dexters-web.de:6869/api/status/" + CarId).Result;
-            var resultContent = ret.Content.ReadAsStringAsync().Result;
-            return resultContent;
+            return GetDataFromServer("https://ovms.dexters-web.de:6869/api/status/" + CarId);
         }
 
         internal string GetLocation()
         {
-            var ret = httpClientForAuthentification.GetAsync("https://ovms.dexters-web.de:6869/api/location/" + CarId).Result;
+            return GetDataFromServer("https://ovms.dexters-web.de:6869/api/location/" + CarId);
+        }
+
+        string GetDataFromServer(string url)
+        {
+            var ret = httpClientForAuthentification.GetAsync(url).Result;
             var resultContent = ret.Content.ReadAsStringAsync().Result;
+
+            if (ApplicationSettings.Default.ProtocolLogging)
+            {
+                try
+                {
+                    string name = url.Substring(37).Replace('/', '-') + ".txt";
+                    string path = "protocollogging/" + DateTime.Now.ToString("yyyyMMddmmssfff") + "-" + name;
+
+                    System.IO.File.WriteAllText(path, resultContent);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                }
+            }
+
             return resultContent;
+        }
+
+        bool checkCarTypeIsDriving(dynamic j)
+        {
+            if (isHyundaiVFL)
+            {
+                if (gPSMovementDetector == null)
+                    gPSMovementDetector = new GPSMovementDetector(car);
+
+                double latitude = Convert.ToDouble(j["latitude"], Tools.ciEnUS);
+                double longitude = Convert.ToDouble(j["longitude"], Tools.ciEnUS);
+                string timestamp = j["m_msgtime_l"];
+                DateTime dt = DateTime.ParseExact(timestamp, "yyyy-MM-dd HH:mm:ss", Tools.ciEnUS).ToLocalTime();
+
+                return gPSMovementDetector.InsertGPSData(dt, latitude, longitude);
+            } 
+            else if (isSmartElectic)
+            {
+                return Convert.ToDouble(j["speed"], Tools.ciEnUS) > 1;
+            }
+            else
+            {
+                return j["drivemode"] == "1" || Convert.ToDouble(j["speed"], Tools.ciEnUS) > 1;
+            }
         }
 
         public bool isDriving(bool forceInsert = false)
@@ -367,7 +407,7 @@ namespace OVMS
                 }
 
                 dynamic j = new JavaScriptSerializer().DeserializeObject(resultContent);
-                bool driving = j["drivemode"] == "1" || Convert.ToDouble(j["speed"], Tools.ciEnUS) > 1;
+                bool driving = checkCarTypeIsDriving(j);
 
                 if (driving || forceInsert)
                 {
@@ -468,9 +508,19 @@ namespace OVMS
             return false;
         }
 
+        bool isHyundaiVFL
+        {
+            get { return Cartype == "HIONVFL"; }
+        }
+
+        bool isSmartElectic
+        {
+            get { return Cartype == "SE"; }
+        }
+
         private double GetChargeEnergyAdded(double chargekwh, double currentSOC)
         {
-            if (Cartype == "HIONVFL")
+            if (isHyundaiVFL)
             {
                 double start_charging_soc = car.DbHelper.start_charging_soc;
                 if (start_charging_soc == 0)

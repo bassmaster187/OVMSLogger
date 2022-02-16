@@ -23,7 +23,10 @@ namespace OVMS
 
                 ExceptionlessClient.Default.SubmitLog("Start " + Assembly.GetExecutingAssembly().GetName().Version);
 
-                TeslaLogger.Logfile.Log("Start OVMSLogger V" + Assembly.GetExecutingAssembly().GetName().Version);
+                Logfile.WriteToLogfile = true;
+                Logfile.Logfilepath = new System.IO.FileInfo("../nohup.out").FullName;
+                Logfile.Log("Start OVMSLogger V" + Assembly.GetExecutingAssembly().GetName().Version);
+
 
                 InitConnectToDB();
 

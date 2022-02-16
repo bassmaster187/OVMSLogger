@@ -4,3 +4,4 @@ bin/Release
 /.vs
 packages
 *.user
+bin/nohup.out

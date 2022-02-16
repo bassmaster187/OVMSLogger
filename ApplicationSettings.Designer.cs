@@ -32,15 +32,21 @@ namespace OVMS {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("WA0Y7kBPrfI4yXwYPzSmB4NQrycRj9ooFh1Y5sKB")]
         public string ExceptionlessApiKey {
             get {
                 return ((string)(this["ExceptionlessApiKey"]));
             }
-            set {
-                this["ExceptionlessApiKey"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ProtocolLogging {
+            get {
+                return ((bool)(this["ProtocolLogging"]));
             }
         }
     }
