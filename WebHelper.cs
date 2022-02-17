@@ -93,13 +93,9 @@ namespace OVMS
                     if (id == CarId)
                     {
                         car.Log("Car found in account!");
-                        PrintProtocol();
                         break;
                     }
                 }
-
-                // Get One Position
-                isDriving(true);
             }
         }
 
@@ -163,7 +159,7 @@ namespace OVMS
             return httpClientForAuthentification;
         }
 
-        void PrintProtocol()
+        public void PrintProtocol()
         {
             try
             {
@@ -346,9 +342,17 @@ namespace OVMS
             return GetDataFromServer("https://ovms.dexters-web.de:6869/api/location/" + CarId);
         }
 
-        string GetDataFromServer(string url)
+        string GetDataFromServer(string url, bool autoAuth = true)
         {
             var ret = httpClientForAuthentification.GetAsync(url).Result;
+            if (ret.StatusCode == HttpStatusCode.Unauthorized || ret.StatusCode == HttpStatusCode.NotFound)
+            {
+                car.Log("url Error: " + ret.StatusCode.ToString());
+
+                Auth();
+                ret = httpClientForAuthentification.GetAsync(url).Result;
+            }
+
             var resultContent = ret.Content.ReadAsStringAsync().Result;
 
             if (ApplicationSettings.Default.ProtocolLogging)

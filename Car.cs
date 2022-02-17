@@ -53,6 +53,8 @@ namespace OVMS
             try
             {
                 wh.Auth();
+                wh.isDriving(true);
+                wh.PrintProtocol();
 
                 while (run)
                 {
