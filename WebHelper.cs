@@ -375,6 +375,7 @@ namespace OVMS
 
         bool checkCarTypeIsDriving(dynamic j)
         {
+            /*
             if (isHyundaiVFL)
             {
                 if (gPSMovementDetector == null)
@@ -387,7 +388,9 @@ namespace OVMS
 
                 return gPSMovementDetector.InsertGPSData(dt, latitude, longitude);
             } 
-            else if (isSmartElectic)
+            else 
+            */
+            if (isSmartElectic)
             {
                 return Convert.ToDouble(j["speed"], Tools.ciEnUS) > 1;
             }
