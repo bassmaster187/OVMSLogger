@@ -1,5 +1,7 @@
 ﻿using Exceptionless;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +13,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using TeslaLogger;
 
 namespace OVMS
@@ -83,7 +84,7 @@ namespace OVMS
 
                 car.Log("Vehicles: " + json);
 
-                dynamic j = new JavaScriptSerializer().DeserializeObject(json);
+                dynamic j = JsonConvert.DeserializeObject(json);
 
                 foreach (dynamic a in j)
                 {
@@ -164,7 +165,7 @@ namespace OVMS
             try
             {
                 var s = GetProtocol();
-                dynamic j = new JavaScriptSerializer().DeserializeObject(s);
+                dynamic j = JsonConvert.DeserializeObject(s);
 
                 foreach (dynamic k in j)
                 {
@@ -413,7 +414,7 @@ namespace OVMS
                     return false;
                 }
 
-                dynamic j = new JavaScriptSerializer().DeserializeObject(resultContent);
+                dynamic j = JsonConvert.DeserializeObject(resultContent);
                 bool driving = checkCarTypeIsDriving(j);
 
                 if (driving || forceInsert)
@@ -435,7 +436,7 @@ namespace OVMS
                     }
 
                     string statusResult = GetStatus();
-                    dynamic j2 = new JavaScriptSerializer().DeserializeObject(statusResult);
+                    dynamic j2 = JsonConvert.DeserializeObject(statusResult);
 
                     double odometer = Convert.ToDouble(j2["odometer"], Tools.ciEnUS) / 10;
                     int batteryLevel = (int)Convert.ToDouble(j2["soc"], Tools.ciEnUS);
@@ -467,7 +468,7 @@ namespace OVMS
             {
                 resultContent = GetCharge();
 
-                dynamic j = new JavaScriptSerializer().DeserializeObject(resultContent);
+                dynamic j = JsonConvert.DeserializeObject(resultContent);
                 if (j["chargestate"] == "charging")
                 {
                     string timestamp = j["m_msgtime_d"];
@@ -593,7 +594,7 @@ namespace OVMS
                     resultContent = await webClient.DownloadStringTaskAsync(new Uri(url));
                     DBHelper.AddMothershipDataToDB("ReverseGeocoding", start, 0);
 
-                    object jsonResult = new JavaScriptSerializer().DeserializeObject(resultContent);
+                    dynamic jsonResult = JsonConvert.DeserializeObject(resultContent);
                     object r1 = ((Dictionary<string, object>)jsonResult)["address"];
                     Dictionary<string, object> r2 = (Dictionary<string, object>)r1;
                     string postcode = "";
