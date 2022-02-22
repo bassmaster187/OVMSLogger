@@ -22,6 +22,7 @@ namespace OVMS
         internal HttpClient httpclientOVMSAPI = null;
         internal object httpClientLock = new object();
         internal HttpClient httpClientForAuthentification;
+        HttpClient httpClientCurrentJSON = new HttpClient();
         CookieContainer tokenCookieContainer;
         string Username;
         string Password;
@@ -443,8 +444,17 @@ namespace OVMS
                     double idealBatteryRangeKm = Convert.ToDouble(j2["estimatedrange"], Tools.ciEnUS);
                     double batteryRangeKm = Convert.ToDouble(j2["idealrange"], Tools.ciEnUS);
 
-                    car.DbHelper.InsertPos(timestamp, Convert.ToDouble(latitude, Tools.ciEnUS), Convert.ToDouble(longitude, Tools.ciEnUS),
-                        (int)Convert.ToDouble(speed, Tools.ciEnUS),
+                    int iSpeed = (int)Convert.ToDouble(speed, Tools.ciEnUS);
+                    car.currentJSON.current_speed = iSpeed;
+                    car.currentJSON.current_odometer = odometer;
+                    car.currentJSON.latitude = Convert.ToDouble(latitude, Tools.ciEnUS);
+                    car.currentJSON.longitude = Convert.ToDouble(longitude, Tools.ciEnUS);
+                    car.currentJSON.current_battery_level = batteryLevel;
+                    car.currentJSON.current_battery_range_km = batteryRangeKm;
+                    car.currentJSON.CreateCurrentJSON();
+
+                    car.DbHelper.InsertPos(timestamp, car.currentJSON.latitude, car.currentJSON.longitude,
+                        iSpeed,
                         Convert.ToDecimal(power, Tools.ciEnUS),
                         odometer, idealBatteryRangeKm, batteryRangeKm, batteryLevel, null, altitude);
                     
@@ -695,6 +705,12 @@ namespace OVMS
             }
 
             return "";
+        }
+
+        public void SendCurrentJSON(string data)
+        {
+            var r = httpClientCurrentJSON.PostAsync("http://localhost:5000/setcurrentjson/" + car.CarInDB, new StringContent(data));
+            var tt = r.Result;
         }
     }
 }

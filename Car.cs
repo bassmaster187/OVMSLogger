@@ -12,9 +12,10 @@ namespace OVMS
     class Car
     {
         internal CarState _currentState = CarState.Start;
-        WebHelper wh;
+        internal WebHelper wh;
         internal DBHelper DbHelper;
         internal int CarInDB;
+        internal CurrentJSON currentJSON;
 
 
         internal enum CarState
@@ -41,6 +42,8 @@ namespace OVMS
 
             wh = new WebHelper(this, name, password, carId);
             DbHelper = new DBHelper(this);
+            currentJSON = new CurrentJSON(this);
+
             thread = new Thread(Loop)
             {
                 Name = "Car" + CarInDB
@@ -188,6 +191,10 @@ namespace OVMS
 
         private void HandleState_Start()
         {
+            currentJSON.current_driving = false;
+            currentJSON.current_charging = false;
+            currentJSON.CreateCurrentJSON();
+
             DbHelper.CloseChargingstates();
 
             Log("Start Online");

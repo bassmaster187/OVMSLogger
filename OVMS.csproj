@@ -107,6 +107,7 @@
       <DependentUpon>ApplicationSettings.settings</DependentUpon>
     </Compile>
     <Compile Include="Car.cs" />
+    <Compile Include="CurrentJSON.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="GeocodeCache.cs" />
