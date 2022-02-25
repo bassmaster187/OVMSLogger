@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -176,17 +178,26 @@ namespace OVMS
                    { "heading", heading}
                 };
 
-                
+
 
                 current_json = JsonConvert.SerializeObject(values);
                 car.wh.SendCurrentJSON(current_json);
-                
+
             }
             catch (Exception ex)
             {
-                car.CreateExceptionlessClient(ex).Submit();
+                if (ex is AggregateException && ex.InnerException is HttpRequestException hrex && hrex.InnerException is WebException wex)
+                {
+                    car.Log("SendCurrentJSON: " + wex.Message);
+                }
+                else
+                {
+                    car.CreateExceptionlessClient(ex).Submit();
 
-                car.Log(ex.ToString());
+                    car.Log(ex.ToString());
+                    current_json = "";
+
+                }
                 current_json = "";
             }
         }
