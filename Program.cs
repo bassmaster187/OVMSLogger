@@ -18,6 +18,9 @@ namespace OVMS
         {
             try
             {
+                if (args?.Contains("nodate") == true)
+                    Logfile.noDate = true;
+
                 ExceptionlessClient.Default.Startup("WA0Y7kBPrfI4yXwYPzSmB4NQrycRj9ooFh1Y5sKB");
                 ExceptionlessClient.Default.Configuration.ServerUrl = ApplicationSettings.Default.ExceptionlessServerUrl;
                 ExceptionlessClient.Default.Configuration.SetVersion(Assembly.GetExecutingAssembly().GetName().Version);
@@ -57,7 +60,7 @@ namespace OVMS
             }
             catch (Exception ex)
             {
-                ex.ToExceptionless().Submit();
+                ex.ToExceptionless().FirstCarUserID().Submit();
                 TeslaLogger.Logfile.Log(ex.ToString());
             }
         }

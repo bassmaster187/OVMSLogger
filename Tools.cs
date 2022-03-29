@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Exceptionless;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TeslaLogger;
 
 namespace OVMS
 {
@@ -47,6 +51,61 @@ namespace OVMS
             }
 
             return "NULL";
+        }
+
+        public static bool IsDocker()
+        {
+            try
+            {
+                string filename = "/tmp/teslalogger-DOCKER";
+
+                if (File.Exists(filename))
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToExceptionless().FirstCarUserID().Submit();
+                Logfile.ExceptionWriter(ex, "IsDocker");
+            }
+
+            return false;
+        }
+    }
+
+    public static class EventBuilderExtension
+    {
+        static String lastFirstCar;
+        public static EventBuilder FirstCarUserID(this EventBuilder v)
+        {
+            try
+            {
+                if (lastFirstCar != null)
+                    return v.SetUserIdentity(lastFirstCar);
+
+                using (MySqlConnection con = new MySqlConnection(DBHelper.DBConnectionstring))
+                {
+                    con.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("SELECT tesla_token FROM cars where length(tesla_token) >= 8 limit 1", con))
+                    {
+                        object o = cmd.ExecuteScalar()?.ToString();
+                        if (o is String && o.ToString().Length >= 8)
+                        {
+                            lastFirstCar = o.ToString();
+                            return v.SetUserIdentity(o.ToString());
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Logfile.Log(ex.ToString());
+            }
+
+            return v;
         }
     }
 }

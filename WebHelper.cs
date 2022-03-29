@@ -39,18 +39,19 @@ namespace OVMS
         internal string Cartype;
         GPSMovementDetector gPSMovementDetector = null;
 
+        static WebHelper()
+        {
+            //Damit Mono keine Zertifikatfehler wirft :-(
+#pragma warning disable CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
+            ServicePointManager.ServerCertificateValidationCallback += (p1, p2, p3, p4) => true;
+#pragma warning restore CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
+        }
+
         public WebHelper(Car car, string Username, string Password, string CarId)
         {
             this.Username = Username;
             this.Password = Password;
             this.CarId = CarId;
-
-            //Damit Mono keine Zertifikatfehler wirft :-(
-#pragma warning disable CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
-            ServicePointManager.ServerCertificateValidationCallback += (p1, p2, p3, p4) => true;
-#pragma warning restore CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
             this.car = car;
         }
 
@@ -377,7 +378,7 @@ namespace OVMS
 
         bool checkCarTypeIsDriving(dynamic j)
         {
-            /*
+            
             if (isHyundaiVFL)
             {
                 if (gPSMovementDetector == null)
@@ -387,12 +388,12 @@ namespace OVMS
                 double longitude = Convert.ToDouble(j["longitude"], Tools.ciEnUS);
                 string timestamp = j["m_msgtime_l"];
                 DateTime dt = DateTime.ParseExact(timestamp, "yyyy-MM-dd HH:mm:ss", Tools.ciEnUS).ToLocalTime();
+                bool gpsdriving = gPSMovementDetector.InsertGPSData(dt, latitude, longitude);
+                bool canbusdriving = Convert.ToDouble(j["speed"], Tools.ciEnUS) > 1;
 
-                return gPSMovementDetector.InsertGPSData(dt, latitude, longitude);
+                return gpsdriving || canbusdriving;
             } 
-            else 
-            */
-            if (isSmartElectic)
+            else if (isSmartElectic)
             {
                 return Convert.ToDouble(j["speed"], Tools.ciEnUS) > 1;
             }
@@ -417,6 +418,8 @@ namespace OVMS
 
                 dynamic j = JsonConvert.DeserializeObject(resultContent);
                 bool driving = checkCarTypeIsDriving(j);
+
+                // car.Log("isdriving: " + resultContent);
 
                 if (driving || forceInsert)
                 {

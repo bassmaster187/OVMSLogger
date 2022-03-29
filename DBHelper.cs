@@ -104,6 +104,9 @@ VALUES(
 
         internal static string GetDBConnectionstring(bool obfuscate = false)
         {
+            if (Tools.IsDocker())
+                return "Server=database;Database=teslalogger;Uid=root;Password=teslalogger;CharSet=utf8mb4;";
+
             return "Server=127.0.0.1;Database=teslalogger;Uid=root;Password=teslalogger;CharSet=utf8mb4;";
         }
 
