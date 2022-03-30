@@ -4,10 +4,13 @@
 
 OVMSLogger is a self-hosted logger on Raspberry Pi or Docker. It is based on the famous [Teslalogger](https://github.com/bassmaster187/TeslaLogger) and uses many of its funktionalities.
 
-What do you need: 
+## What do you need: 
 - OVMS Hardware: https://www.openvehicles.com/
 - OVMS connected to ovms.dexters-web.de
 - Basic Teslalogger installlation: https://github.com/bassmaster187/TeslaLogger
+- Location streaming set to 10 Seconds in your OVMS/Config/Notifications:
+ ![image](https://user-images.githubusercontent.com/6816385/160799421-fd5763c3-1ede-484a-b0bf-516af9a60389.png)
+
 
 # Connect your OVMS car to Teslalogger
 - Go to http://raspberry/admin/ovms.php or http://localhost:8888/admin/ovms.php depending on your installation.
