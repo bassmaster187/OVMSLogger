@@ -8,3 +8,4 @@ bin/nohup.out
 copytoOVMS.cmd
 bin/geofence-private.csv
 bin/geofence.csv
+copyToTeslaloggerRelease.cmd
