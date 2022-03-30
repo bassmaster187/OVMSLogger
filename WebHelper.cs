@@ -533,7 +533,7 @@ namespace OVMS
                         if (Double.TryParse(chargecurrent, System.Globalization.NumberStyles.Number, Tools.ciEnUS, out double dChargecurrent))
                             car.currentJSON.current_charger_actual_current = (int)Math.Round(dChargecurrent);
 
-                        car.currentJSON.current_charge_energy_added = dCharge_energy_added;
+                        car.currentJSON.current_charge_energy_added = Math.Round(dCharge_energy_added,2);
 
                         car.currentJSON.current_driving = false;
                         car.currentJSON.current_charging = true;
