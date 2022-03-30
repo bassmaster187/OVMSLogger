@@ -25,7 +25,7 @@ namespace OVMS
                 ExceptionlessClient.Default.Configuration.ServerUrl = ApplicationSettings.Default.ExceptionlessServerUrl;
                 ExceptionlessClient.Default.Configuration.SetVersion(Assembly.GetExecutingAssembly().GetName().Version);
 
-                ExceptionlessClient.Default.SubmitLog("Start " + Assembly.GetExecutingAssembly().GetName().Version);
+                ExceptionlessClient.Default.CreateLog("Start " + Assembly.GetExecutingAssembly().GetName().Version).FirstCarUserID().Submit();
 
                 Logfile.WriteToLogfile = true;
                 Logfile.Logfilepath = new System.IO.FileInfo("../nohup.out").FullName;

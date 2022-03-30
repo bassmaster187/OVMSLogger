@@ -23,12 +23,12 @@ namespace OVMS
 
         public static string GeofenceFilename
         {
-            get {return "geofence.csv";}
+            get {return "../geofence.csv";}
         }
 
         public static string GeofencePrivateFilename
         {
-            get { return "geofence-private.csv"; }
+            get { return "../geofence-private.csv"; }
         }
     }
 }

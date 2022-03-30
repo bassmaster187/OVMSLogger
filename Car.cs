@@ -181,6 +181,7 @@ namespace OVMS
             {
                 Log("Start Charging");
                 _currentState = CarState.Charge;
+                wh.isDriving(true);
                 DbHelper.StartChargingState(wh);
             }
             else

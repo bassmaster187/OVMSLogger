@@ -45,6 +45,7 @@ namespace OVMS
 #pragma warning disable CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
             ServicePointManager.ServerCertificateValidationCallback += (p1, p2, p3, p4) => true;
 #pragma warning restore CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
         }
 
         public WebHelper(Car car, string Username, string Password, string CarId)
@@ -516,7 +517,34 @@ namespace OVMS
                         car.DbHelper.InsertCan(timestamp, 2, temperature_battery);
                     }
 
-                    
+                    try
+                    {
+                        if (Double.TryParse(battery_level, System.Globalization.NumberStyles.Number, Tools.ciEnUS, out double iSOC))
+                            car.currentJSON.current_battery_level = (int)Math.Round(iSOC);
+
+                        car.currentJSON.current_charger_power = charger_power;
+
+                        if (Double.TryParse(ideal_battery_range_km, System.Globalization.NumberStyles.Number, Tools.ciEnUS, out double dIdeal_battery_range_km))
+                            car.currentJSON.current_battery_range_km = dIdeal_battery_range_km;
+
+                        if (int.TryParse(linevoltage, System.Globalization.NumberStyles.Number, Tools.ciEnUS, out int iLineVoltage))
+                            car.currentJSON.current_charger_voltage = iLineVoltage;
+
+                        if (Double.TryParse(chargecurrent, System.Globalization.NumberStyles.Number, Tools.ciEnUS, out double dChargecurrent))
+                            car.currentJSON.current_charger_actual_current = (int)Math.Round(dChargecurrent);
+
+                        car.currentJSON.current_charge_energy_added = dCharge_energy_added;
+
+                        car.currentJSON.current_driving = false;
+                        car.currentJSON.current_charging = true;
+                        car.currentJSON.CreateCurrentJSON();
+                    } 
+                    catch (Exception ex)
+                    {
+                        car.CreateExceptionlessClient(ex).AddObject(resultContent, "ResultContent").Submit();
+                        car.Log(ex.ToString());
+                    }
+
                     return true;
                 }
             }

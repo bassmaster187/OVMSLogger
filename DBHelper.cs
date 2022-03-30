@@ -853,6 +853,8 @@ WHERE
         {
             
             int chargeID = GetMaxChargeid(out DateTime chargeStart, out double start_charging_soc);
+            int posId = GetMaxPosid();
+            UpdateAddress(car, posId);
             this.start_charging_soc = start_charging_soc;
 
             int chargingstateid = 0;
@@ -890,7 +892,7 @@ VALUES(
                     {
                         cmd.Parameters.AddWithValue("@CarID", car.CarInDB);
                         cmd.Parameters.AddWithValue("@StartDate", chargeStart);
-                        cmd.Parameters.AddWithValue("@Pos", GetMaxPosid());
+                        cmd.Parameters.AddWithValue("@Pos", posId);
                         cmd.Parameters.AddWithValue("@StartChargingID", chargeID);
                         cmd.Parameters.AddWithValue("@fast_charger_brand", "");
                         cmd.Parameters.AddWithValue("@fast_charger_type", "");
