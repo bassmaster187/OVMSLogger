@@ -5,3 +5,4 @@ bin/Release
 packages
 *.user
 bin/nohup.out
+copytoOVMS.cmd

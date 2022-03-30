@@ -12,7 +12,7 @@ namespace OVMS {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
     internal sealed partial class ApplicationSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static ApplicationSettings defaultInstance = ((ApplicationSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new ApplicationSettings())));
@@ -20,15 +20,6 @@ namespace OVMS {
         public static ApplicationSettings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://ds718plus:5002")]
-        public string ExceptionlessServerUrl {
-            get {
-                return ((string)(this["ExceptionlessServerUrl"]));
             }
         }
         
@@ -47,6 +38,15 @@ namespace OVMS {
         public bool ProtocolLogging {
             get {
                 return ((bool)(this["ProtocolLogging"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://home.pogea.de:5002")]
+        public string ExceptionlessServerUrl {
+            get {
+                return ((string)(this["ExceptionlessServerUrl"]));
             }
         }
     }
