@@ -175,7 +175,9 @@ namespace OVMS
                    { "country_code", current_country_code },
                    { "state", current_state },
                    { "display_name", ""},
-                   { "heading", heading}
+                   { "heading", heading},
+                   { "software_update_status", "" },
+                   { "software_update_version" , "" }
                 };
 
 

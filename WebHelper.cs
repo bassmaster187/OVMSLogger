@@ -449,6 +449,7 @@ namespace OVMS
                     double batteryRangeKm = Convert.ToDouble(j2["idealrange"], Tools.ciEnUS);
 
                     int iSpeed = (int)Convert.ToDouble(speed, Tools.ciEnUS);
+                    car.currentJSON.current_driving = driving;
                     car.currentJSON.current_speed = iSpeed;
                     car.currentJSON.current_odometer = odometer;
                     car.currentJSON.latitude = Convert.ToDouble(latitude, Tools.ciEnUS);
