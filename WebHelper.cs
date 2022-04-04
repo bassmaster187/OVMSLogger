@@ -97,6 +97,12 @@ namespace OVMS
                     if (id == CarId)
                     {
                         car.Log("Car found in account!");
+
+                        var r3 = client.GetAsync("https://ovms.dexters-web.de:6869/api/vehicle/"+id).Result;
+                        var json3 = r3.Content.ReadAsStringAsync().Result;
+
+                        car.Log(json3);
+
                         break;
                     }
                 }

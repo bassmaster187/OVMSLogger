@@ -946,5 +946,123 @@ VALUES(
 
             return 0;
         }
+
+        internal void GetLastTrip()
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(DBConnectionstring))
+                {
+                    con.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(@"
+SELECT
+    *
+FROM
+    trip
+WHERE
+    CarID = @carid
+ORDER BY
+    StartDate DESC
+LIMIT 1", con))
+                    {
+                        cmd.Parameters.AddWithValue("@carid", car.CarInDB);
+                        MySqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.Read())
+                        {
+                            car.currentJSON.current_trip_start = (DateTime)dr["StartDate"];
+                            car.currentJSON.current_trip_end = (DateTime)dr["EndDate"];
+
+                            if (dr["StartKm"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_trip_km_start = Convert.ToDouble(dr["StartKm"], Tools.ciEnUS);
+                            }
+
+                            if (dr["EndKm"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_trip_km_end = Convert.ToDouble(dr["EndKm"], Tools.ciEnUS);
+                            }
+
+                            if (dr["speed_max"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_trip_max_speed = Convert.ToDouble(dr["speed_max"], Tools.ciEnUS);
+                            }
+
+                            if (dr["power_max"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_trip_max_power = Convert.ToDouble(dr["power_max"], Tools.ciEnUS);
+                            }
+
+                            if (dr["StartRange"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_trip_start_range = Convert.ToDouble(dr["StartRange"], Tools.ciEnUS);
+                            }
+
+                            if (dr["EndRange"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_trip_end_range = Convert.ToDouble(dr["EndRange"], Tools.ciEnUS);
+                            }
+                        }
+                        dr.Close();
+                    }
+
+
+                    using (MySqlCommand cmd = new MySqlCommand(@"
+SELECT
+    ideal_battery_range_km,
+    battery_range_km,
+    battery_level,
+    lat,
+    lng
+FROM
+    pos
+WHERE
+    CarID = @CarID
+ORDER BY
+    id DESC
+LIMIT 1", con))
+                    {
+                        cmd.Parameters.AddWithValue("@CarID", car.CarInDB);
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                        {
+                            if (dr["ideal_battery_range_km"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_ideal_battery_range_km = Convert.ToDouble(dr["ideal_battery_range_km"], Tools.ciEnUS);
+                            }
+
+                            if (dr["battery_range_km"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_battery_range_km = Convert.ToDouble(dr["battery_range_km"], Tools.ciEnUS);
+                            }
+
+                            if (dr["battery_level"] != DBNull.Value)
+                            {
+                                car.currentJSON.current_battery_level = Convert.ToInt32(dr["battery_level"], Tools.ciEnUS);
+                            }
+
+                            if (dr["lat"] != DBNull.Value)
+                            {
+                                car.currentJSON.latitude = Convert.ToDouble(dr["lat"], Tools.ciEnUS);
+                            }
+
+                            if (dr["lng"] != DBNull.Value)
+                            {
+                                car.currentJSON.longitude = Convert.ToDouble(dr["lng"], Tools.ciEnUS);
+                            }
+                        }
+                        dr.Close();
+                    }
+
+                    car.currentJSON.CreateCurrentJSON();
+                }
+            }
+            catch (Exception ex)
+            {
+                car.CreateExceptionlessClient(ex).Submit();
+
+                car.Log(ex.ToString());
+            }
+        }
     }
 }

@@ -192,6 +192,8 @@ namespace OVMS
 
         private void HandleState_Start()
         {
+            DbHelper.GetLastTrip();
+
             currentJSON.current_driving = false;
             currentJSON.current_charging = false;
             currentJSON.CreateCurrentJSON();
