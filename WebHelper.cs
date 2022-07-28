@@ -39,6 +39,8 @@ namespace OVMS
         internal string Cartype;
         GPSMovementDetector gPSMovementDetector = null;
 
+        DateTime lastConnectToCar = DateTime.MinValue;
+
         static WebHelper()
         {
             //Damit Mono keine Zertifikatfehler wirft :-(
@@ -97,15 +99,30 @@ namespace OVMS
                     if (id == CarId)
                     {
                         car.Log("Car found in account!");
-
-                        var r3 = client.GetAsync("https://ovms.dexters-web.de:6869/api/vehicle/"+id).Result;
-                        var json3 = r3.Content.ReadAsStringAsync().Result;
-
-                        car.Log(json3);
-
+                        ConnectToCar();
                         break;
                     }
                 }
+            }
+        }
+
+        private void ConnectToCar()
+        {
+            try
+            {
+                var ts = DateTime.UtcNow - lastConnectToCar;
+                if (ts.TotalSeconds < 280)
+                    return;
+
+                HttpClient client = GetDefaultHttpClientForAuthentification();
+                var r = client.GetAsync("https://ovms.dexters-web.de:6869/api/vehicle/" + CarId).Result;
+                var json = r.Content.ReadAsStringAsync().Result;
+
+                car.Log("ConnectToCar " + json);
+                lastConnectToCar = DateTime.UtcNow;
+            } catch (Exception ex)
+            {
+                car.SendException2Exceptionless(ex);
             }
         }
 
@@ -354,6 +371,8 @@ namespace OVMS
 
         string GetDataFromServer(string url, bool autoAuth = true)
         {
+            ConnectToCar();
+
             var ret = httpClientForAuthentification.GetAsync(url).Result;
             if (ret.StatusCode == HttpStatusCode.Unauthorized || ret.StatusCode == HttpStatusCode.NotFound)
             {
@@ -417,6 +436,12 @@ namespace OVMS
             {
                 resultContent = GetLocation();
 
+                if (resultContent == "Forbidden")
+                {
+                    car.Log("isDriving/GetLocation Forbidden");
+                    return false;
+                }
+
                 if (resultContent.Length == 3)
                 {
                     car.Log("Empty Location!");
@@ -447,6 +472,12 @@ namespace OVMS
                     }
 
                     string statusResult = GetStatus();
+                    if (statusResult == "Forbidden")
+                    {
+                        car.Log("isDriving/GetStatus Forbidden");
+                        return false;
+                    }
+
                     dynamic j2 = JsonConvert.DeserializeObject(statusResult);
 
                     double odometer = Convert.ToDouble(j2["odometer"], Tools.ciEnUS) / 10;
