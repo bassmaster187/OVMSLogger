@@ -5,8 +5,6 @@ VisualStudioVersion = 18.4.11519.219 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVMS", "OVMS.csproj", "{AE27859B-11FC-4AD1-BBE2-ECDF65473359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logfile", "..\TeslaLogger\Logfile\Logfile.csproj", "{B6462053-A913-47B8-8719-CA08EE5B2E4E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogfileNET8", "..\Logfile\LogfileNET8.csproj", "{A9B347D9-7EA9-2D68-0E69-12536BF28524}"
 EndProject
 Global
