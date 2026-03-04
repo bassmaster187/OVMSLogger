@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31025.194
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11519.219 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVMS", "OVMS.csproj", "{AE27859B-11FC-4AD1-BBE2-ECDF65473359}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logfile", "..\TeslaLogger\Logfile\Logfile.csproj", "{B6462053-A913-47B8-8719-CA08EE5B2E4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogfileNET8", "..\Logfile\LogfileNET8.csproj", "{A9B347D9-7EA9-2D68-0E69-12536BF28524}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B6462053-A913-47B8-8719-CA08EE5B2E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6462053-A913-47B8-8719-CA08EE5B2E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6462053-A913-47B8-8719-CA08EE5B2E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B347D9-7EA9-2D68-0E69-12536BF28524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B347D9-7EA9-2D68-0E69-12536BF28524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B347D9-7EA9-2D68-0E69-12536BF28524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B347D9-7EA9-2D68-0E69-12536BF28524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

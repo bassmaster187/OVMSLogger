@@ -1,4 +1,5 @@
 ﻿using Exceptionless;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -47,7 +48,7 @@ namespace OVMS
 #pragma warning disable CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
             ServicePointManager.ServerCertificateValidationCallback += (p1, p2, p3, p4) => true;
 #pragma warning restore CA5359 // Deaktivieren Sie die Zertifikatüberprüfung nicht
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            // ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
         }
 
         public WebHelper(Car car, string Username, string Password, string CarId)
@@ -64,18 +65,26 @@ namespace OVMS
             {
                 car.Log("Get Token");
                 HttpClient client = GetDefaultHttpClientForAuthentification();
-                var url = "https://ovms.dexters-web.de:6869/api/cookie?username=" + Username + "&password=" + Password;
+                var url = "https://ovms.dexters-web.de:6869/api/cookie?username=" + Uri.EscapeDataString(Username) + "&password=" + Uri.EscapeDataString(Password);
                 var result = client.GetAsync(url).Result;
+                result.EnsureSuccessStatusCode();
+
                 var resultContent = result.Content.ReadAsStringAsync().Result;
 
                 result.Headers.TryGetValues("Set-Cookie", out var setCookie);
                 // PrintCookieContainer();
 
-                var cookieKey = setCookie.First().Split('=')[0];
-                var cookieValue = setCookie.First().Split('=')[1];
-
-                // tokenCookieContainer.Add(new Cookie(cookieKey, cookieValue, "/api/vehicles", "ovms.dexters-web.de"));
-                tokenCookieContainer.Add(new Cookie(cookieKey, cookieValue, "/", "ovms.dexters-web.de"));
+                var setCookieHeader = setCookie?.FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(setCookieHeader))
+                {
+                    var cookiePair = setCookieHeader.Split(';', 2)[0];
+                    var cookieParts = cookiePair.Split('=', 2);
+                    if (cookieParts.Length == 2)
+                    {
+                        // tokenCookieContainer.Add(new Cookie(cookieParts[0], cookieParts[1], "/api/vehicles", "ovms.dexters-web.de"));
+                        tokenCookieContainer.Add(new Cookie(cookieParts[0], cookieParts[1], "/", "ovms.dexters-web.de"));
+                    }
+                }
 
                 // PrintCookieContainer();
 

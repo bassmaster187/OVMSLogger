@@ -1,0 +1,1009 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-03-04T22:15:45.0911467Z",
+  "analysisEndTime": "2026-03-04T22:15:50.6540634Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 9,
+      "incidents": 33,
+      "effort": 33
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 5,
+        "Optional": 2,
+        "Potential": 26,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 9,
+        "Project": 2,
+        "Api": 22
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "OVMS.csproj",
+      "startingProject": true,
+      "issues": 8,
+      "storyPoints": 33,
+      "properties": {
+        "appName": "OVMS",
+        "projectKind": "ClassicDotNetApp",
+        "frameworks": [
+          "net48"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": false,
+        "numberOfFiles": 13,
+        "numberOfCodeFiles": 13,
+        "linesTotal": 3415,
+        "linesOfCode": 3415,
+        "totalApiScanned": 2612,
+        "minLinesOfCodeToChange": 22,
+        "maxLinesOfCodeToChange": 22
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "6a4a4a0b-04d7-436d-a17d-a1a433e7ddf2",
+          "ruleId": "NuGet.0002",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Newtonsoft.Json, 13.0.1\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+              "protected": "Newtonsoft.Json, 13.0.1\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "Newtonsoft.Json, 13.0.1\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "protectedSnippet": "Newtonsoft.Json, 13.0.1\n\nEmpfehlung:\n\nRemove Newtonsoft.Json, and replace with new package Newtonsoft.Json 13.0.4",
+            "label": "Newtonsoft.Json 13.0.1",
+            "properties": {
+              "PackageId": "Newtonsoft.Json",
+              "PackageVersion": "13.0.1",
+              "PackageNewVersion": "13.0.4",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "224442ba-9b6f-4922-9e87-653f094796ae",
+          "ruleId": "NuGet.0003",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Buffers, 4.5.1\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+              "protected": "System.Buffers, 4.5.1\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "System.Buffers, 4.5.1\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+            "protectedSnippet": "System.Buffers, 4.5.1\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+            "label": "System.Buffers 4.5.1",
+            "properties": {
+              "PackageId": "System.Buffers",
+              "PackageVersion": "4.5.1",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "0514c003-b929-4ab5-be9b-cfa6b1a58ac4",
+          "ruleId": "NuGet.0002",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Collections.Immutable, 1.7.1\n\nEmpfehlung:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.3",
+              "protected": "System.Collections.Immutable, 1.7.1\n\nEmpfehlung:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.3"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "System.Collections.Immutable, 1.7.1\n\nEmpfehlung:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.3",
+            "protectedSnippet": "System.Collections.Immutable, 1.7.1\n\nEmpfehlung:\n\nRemove System.Collections.Immutable, and replace with new package System.Collections.Immutable 10.0.3",
+            "label": "System.Collections.Immutable 1.7.1",
+            "properties": {
+              "PackageId": "System.Collections.Immutable",
+              "PackageVersion": "1.7.1",
+              "PackageNewVersion": "10.0.3",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a5892cbe-e980-4912-b344-ad4aae39c5ba",
+          "ruleId": "NuGet.0003",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Memory, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+              "protected": "System.Memory, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "System.Memory, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+            "protectedSnippet": "System.Memory, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+            "label": "System.Memory 4.5.4",
+            "properties": {
+              "PackageId": "System.Memory",
+              "PackageVersion": "4.5.4",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "4cd61b2b-9dcb-4e57-84d8-943cfc867e0f",
+          "ruleId": "NuGet.0002",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Reflection.Metadata, 1.8.1\n\nEmpfehlung:\n\nRemove System.Reflection.Metadata, and replace with new package System.Reflection.Metadata 10.0.3",
+              "protected": "System.Reflection.Metadata, 1.8.1\n\nEmpfehlung:\n\nRemove System.Reflection.Metadata, and replace with new package System.Reflection.Metadata 10.0.3"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "System.Reflection.Metadata, 1.8.1\n\nEmpfehlung:\n\nRemove System.Reflection.Metadata, and replace with new package System.Reflection.Metadata 10.0.3",
+            "protectedSnippet": "System.Reflection.Metadata, 1.8.1\n\nEmpfehlung:\n\nRemove System.Reflection.Metadata, and replace with new package System.Reflection.Metadata 10.0.3",
+            "label": "System.Reflection.Metadata 1.8.1",
+            "properties": {
+              "PackageId": "System.Reflection.Metadata",
+              "PackageVersion": "1.8.1",
+              "PackageNewVersion": "10.0.3",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "70d502d8-7e85-460e-99eb-e9efc2b0934a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+              "protected": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+            "protectedSnippet": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe 6.1.2",
+            "label": "System.Runtime.CompilerServices.Unsafe 5.0.0",
+            "properties": {
+              "PackageId": "System.Runtime.CompilerServices.Unsafe",
+              "PackageVersion": "5.0.0",
+              "PackageNewVersion": "6.1.2",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "8f009bc0-9e01-423c-97a1-36fff894ec1f",
+          "ruleId": "NuGet.0003",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Threading.Tasks.Extensions, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+              "protected": "System.Threading.Tasks.Extensions, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "System.Threading.Tasks.Extensions, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+            "protectedSnippet": "System.Threading.Tasks.Extensions, 4.5.4\n\nEmpfehlung:\n\nIm neuen Frameworkverweis enthaltene Paketfunktionalit\u00E4t",
+            "label": "System.Threading.Tasks.Extensions 4.5.4",
+            "properties": {
+              "PackageId": "System.Threading.Tasks.Extensions",
+              "PackageVersion": "4.5.4",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "c9bef8dd-599e-45f2-b640-3151c72ddb3e",
+          "ruleId": "NuGet.0004",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "BouncyCastle, 1.8.5\n\nEmpfehlung:\n\nBouncyCastle, 1.8.9",
+              "protected": "BouncyCastle, 1.8.5\n\nEmpfehlung:\n\nBouncyCastle, 1.8.9"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "BouncyCastle, 1.8.5\n\nEmpfehlung:\n\nBouncyCastle, 1.8.9",
+            "protectedSnippet": "BouncyCastle, 1.8.5\n\nEmpfehlung:\n\nBouncyCastle, 1.8.9",
+            "label": "BouncyCastle 1.8.5",
+            "properties": {
+              "PackageId": "BouncyCastle",
+              "PackageVersion": "1.8.5",
+              "PackageNewVersion": "1.8.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "71e412f8-4420-43d4-8c3d-7bf9a7465b3f",
+          "ruleId": "NuGet.0005",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe, 6.1.2",
+              "protected": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe, 6.1.2"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe, 6.1.2",
+            "protectedSnippet": "System.Runtime.CompilerServices.Unsafe, 5.0.0\n\nEmpfehlung:\n\nThis package has been deprecated as part of the .NET Package Deprecation effort. You can learn more about it from https://github.com/dotnet/announcements/issues/217\nRemove System.Runtime.CompilerServices.Unsafe, and replace with new package System.Runtime.CompilerServices.Unsafe, 6.1.2",
+            "label": "System.Runtime.CompilerServices.Unsafe 5.0.0",
+            "properties": {
+              "PackageId": "System.Runtime.CompilerServices.Unsafe",
+              "PackageVersion": "5.0.0",
+              "PackageNewVersion": null,
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3c71d7bb-0a0d-43eb-887c-7964e40af5c9",
+          "ruleId": "Project.0001",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "kind": "File",
+            "path": "OVMS.csproj"
+          }
+        },
+        {
+          "incidentId": "718eb975-1925-4fd8-9368-ffb7a2d25919",
+          "ruleId": "Project.0002",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Aktuelles Zielframework: .NETFramework,Version=v4.8\nEmpfohlenes Zielframework: net10.0",
+              "protected": "Aktuelles Zielframework: .NETFramework,Version=v4.8\nEmpfohlenes Zielframework: net10.0"
+            },
+            "kind": "File",
+            "path": "OVMS.csproj",
+            "snippet": "Aktuelles Zielframework: .NETFramework,Version=v4.8\nEmpfohlenes Zielframework: net10.0",
+            "protectedSnippet": "Aktuelles Zielframework: .NETFramework,Version=v4.8\nEmpfohlenes Zielframework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": ".NETFramework,Version=v4.8",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "eb58f92a-128b-4dfd-937f-fff5f2cf6a2a",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "resultContent = await webClient.DownloadStringTaskAsync(new Uri(url));",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "resultContent = await webClient.DownloadStringTaskAsync(new Uri(url));",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 672,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "ea4bdb7b-1eeb-4788-a1bf-601efcac8913",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "resultContent = await webClient.DownloadStringTaskAsync(new Uri(url));",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "resultContent = await webClient.DownloadStringTaskAsync(new Uri(url));",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 672,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "3299a1ca-8e44-451f-98f5-043c2340e1e9",
+          "ruleId": "Api.0002",
+          "description": "WebRequest, HttpWebRequest, ServicePoint, and WebClient are obsolete. Use HttpClient instead. ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "using (WebClient webClient = new WebClient())\r\n                {\r\n\r\n                    webClient.Headers.Add(\u0022User-Agent: TL 1.1\u0022);\r\n                    webClient.Encoding = Encoding.UTF8;\r\n\r\n                    url = \u0022http://nominatim.openstreetmap.org/reverse\u0022;\r\n\r\n                    url \u002B= \u0022?format=jsonv2\u0026lat=\u0022;\r\n                    url \u002B= latitude.ToString();\r\n                    url \u002B= \u0022\u0026lon=\u0022;\r\n                    url \u002B= longitude.ToString();\r\n\r\n                   \r\n                    url \u002B= \u0022\u0026email=mail\u0022;\r\n                    url \u002B= \u0022@\u0022;\r\n                    url \u002B= \u0022teslalogger\u0022;\r\n                    url \u002B= \u0022.de\u0022;\r\n                    \r\n\r\n                    DateTime start = DateTime.UtcNow;\r\n                    resultContent = await webClient.DownloadStringTaskAsync(new Uri(url));\r\n                    DBHelper.AddMothershipDataToDB(\u0022ReverseGeocoding\u0022, start, 0);\r\n\r\n                    dynamic jsonResult = JsonConvert.DeserializeObject(resultContent);\r\n                    object r1 = ((Dictionary\u003Cstring, object\u003E)jsonResult)[\u0022address\u0022];\r\n                    Dictionary\u003Cstring, object\u003E r2 = (Dictionary\u003Cstring, object\u003E)r1;\r\n                    string postcode = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022postcode\u0022))\r\n                    {\r\n                        postcode = r2[\u0022postcode\u0022].ToString();\r\n                    }\r\n\r\n                    string country_code = r2[\u0022country_code\u0022].ToString();\r\n\r\n                    string road = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022road\u0022))\r\n                    {\r\n                        road = r2[\u0022road\u0022].ToString();\r\n                    }\r\n\r\n                    string city = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022city\u0022))\r\n                    {\r\n                        city = r2[\u0022city\u0022].ToString();\r\n                    }\r\n                    else if (r2.ContainsKey(\u0022town\u0022))\r\n                    {\r\n                        city = r2[\u0022town\u0022].ToString();\r\n                    }\r\n                    else if (r2.ContainsKey(\u0022village\u0022))\r\n                    {\r\n                        city = r2[\u0022village\u0022].ToString();\r\n                    }\r\n\r\n                    string house_number = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022house_number\u0022))\r\n                    {\r\n                        house_number = r2[\u0022house_number\u0022].ToString();\r\n                    }\r\n\r\n                    string name = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022name\u0022) \u0026\u0026 r2[\u0022name\u0022] != null)\r\n                    {\r\n                        name = r2[\u0022name\u0022].ToString();\r\n                    }\r\n\r\n                    string address29 = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022address29\u0022) \u0026\u0026 r2[\u0022address29\u0022] != null)\r\n                    {\r\n                        address29 = r2[\u0022address29\u0022].ToString();\r\n                    }\r\n\r\n                    string adresse = \u0022\u0022;\r\n\r\n                    if (address29.Length \u003E 0)\r\n                    {\r\n                        adresse \u002B= address29 \u002B \u0022, \u0022;\r\n                    }\r\n\r\n                    if (country_code != \u0022de\u0022)\r\n                    {\r\n                        adresse \u002B= country_code \u002B \u0022-\u0022;\r\n                    }\r\n\r\n                    adresse \u002B= postcode \u002B \u0022 \u0022 \u002B city \u002B \u0022, \u0022 \u002B road \u002B \u0022 \u0022 \u002B house_number;\r\n\r\n                    if (name.Length \u003E 0)\r\n                    {\r\n                        adresse \u002B= \u0022 / \u0022 \u002B name;\r\n                    }\r\n\r\n                    System.Diagnostics.Debug.WriteLine(url \u002B \u0022\\r\\n\u0022 \u002B adresse);\r\n\r\n                    if (insertGeocodecache)\r\n                    {\r\n                        GeocodeCache.Instance.Insert(latitude, longitude, adresse);\r\n                    }\r\n\r\n\r\n                    NominatimCount\u002B\u002B;\r\n                    Logfile.Log(\u0022Reverse geocoding by Nominatim\u0022 \u002B NominatimCount);\r\n                    \r\n\r\n                    return adresse;\r\n                }",
+              "protected": "M:System.Net.WebClient.#ctor"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "using (WebClient webClient = new WebClient())\r\n                {\r\n\r\n                    webClient.Headers.Add(\u0022User-Agent: TL 1.1\u0022);\r\n                    webClient.Encoding = Encoding.UTF8;\r\n\r\n                    url = \u0022http://nominatim.openstreetmap.org/reverse\u0022;\r\n\r\n                    url \u002B= \u0022?format=jsonv2\u0026lat=\u0022;\r\n                    url \u002B= latitude.ToString();\r\n                    url \u002B= \u0022\u0026lon=\u0022;\r\n                    url \u002B= longitude.ToString();\r\n\r\n                   \r\n                    url \u002B= \u0022\u0026email=mail\u0022;\r\n                    url \u002B= \u0022@\u0022;\r\n                    url \u002B= \u0022teslalogger\u0022;\r\n                    url \u002B= \u0022.de\u0022;\r\n                    \r\n\r\n                    DateTime start = DateTime.UtcNow;\r\n                    resultContent = await webClient.DownloadStringTaskAsync(new Uri(url));\r\n                    DBHelper.AddMothershipDataToDB(\u0022ReverseGeocoding\u0022, start, 0);\r\n\r\n                    dynamic jsonResult = JsonConvert.DeserializeObject(resultContent);\r\n                    object r1 = ((Dictionary\u003Cstring, object\u003E)jsonResult)[\u0022address\u0022];\r\n                    Dictionary\u003Cstring, object\u003E r2 = (Dictionary\u003Cstring, object\u003E)r1;\r\n                    string postcode = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022postcode\u0022))\r\n                    {\r\n                        postcode = r2[\u0022postcode\u0022].ToString();\r\n                    }\r\n\r\n                    string country_code = r2[\u0022country_code\u0022].ToString();\r\n\r\n                    string road = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022road\u0022))\r\n                    {\r\n                        road = r2[\u0022road\u0022].ToString();\r\n                    }\r\n\r\n                    string city = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022city\u0022))\r\n                    {\r\n                        city = r2[\u0022city\u0022].ToString();\r\n                    }\r\n                    else if (r2.ContainsKey(\u0022town\u0022))\r\n                    {\r\n                        city = r2[\u0022town\u0022].ToString();\r\n                    }\r\n                    else if (r2.ContainsKey(\u0022village\u0022))\r\n                    {\r\n                        city = r2[\u0022village\u0022].ToString();\r\n                    }\r\n\r\n                    string house_number = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022house_number\u0022))\r\n                    {\r\n                        house_number = r2[\u0022house_number\u0022].ToString();\r\n                    }\r\n\r\n                    string name = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022name\u0022) \u0026\u0026 r2[\u0022name\u0022] != null)\r\n                    {\r\n                        name = r2[\u0022name\u0022].ToString();\r\n                    }\r\n\r\n                    string address29 = \u0022\u0022;\r\n                    if (r2.ContainsKey(\u0022address29\u0022) \u0026\u0026 r2[\u0022address29\u0022] != null)\r\n                    {\r\n                        address29 = r2[\u0022address29\u0022].ToString();\r\n                    }\r\n\r\n                    string adresse = \u0022\u0022;\r\n\r\n                    if (address29.Length \u003E 0)\r\n                    {\r\n                        adresse \u002B= address29 \u002B \u0022, \u0022;\r\n                    }\r\n\r\n                    if (country_code != \u0022de\u0022)\r\n                    {\r\n                        adresse \u002B= country_code \u002B \u0022-\u0022;\r\n                    }\r\n\r\n                    adresse \u002B= postcode \u002B \u0022 \u0022 \u002B city \u002B \u0022, \u0022 \u002B road \u002B \u0022 \u0022 \u002B house_number;\r\n\r\n                    if (name.Length \u003E 0)\r\n                    {\r\n                        adresse \u002B= \u0022 / \u0022 \u002B name;\r\n                    }\r\n\r\n                    System.Diagnostics.Debug.WriteLine(url \u002B \u0022\\r\\n\u0022 \u002B adresse);\r\n\r\n                    if (insertGeocodecache)\r\n                    {\r\n                        GeocodeCache.Instance.Insert(latitude, longitude, adresse);\r\n                    }\r\n\r\n\r\n                    NominatimCount\u002B\u002B;\r\n                    Logfile.Log(\u0022Reverse geocoding by Nominatim\u0022 \u002B NominatimCount);\r\n                    \r\n\r\n                    return adresse;\r\n                }",
+            "protectedSnippet": "M:System.Net.WebClient.#ctor",
+            "label": "M:System.Net.WebClient.#ctor",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://aka.ms/dotnet-warnings/SYSLIB0014",
+                "isCustom": false
+              }
+            ],
+            "line": 651,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "c302351c-98b9-432a-95cd-d054fab9af82",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var resultContent = ret.Content.ReadAsStringAsync().Result;",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "var resultContent = ret.Content.ReadAsStringAsync().Result;",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 384,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "a0cce7d6-420a-4586-9d03-ea511470cbc8",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "httpClientForAuthentification.BaseAddress = new Uri(\u0022https://ovms.dexters-web.de:6869\u0022);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "httpClientForAuthentification.BaseAddress = new Uri(\u0022https://ovms.dexters-web.de:6869\u0022);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 181,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "6c813149-5e46-4c51-909b-a1acf8a4abe3",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "httpClientForAuthentification.BaseAddress = new Uri(\u0022https://ovms.dexters-web.de:6869\u0022);",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "httpClientForAuthentification.BaseAddress = new Uri(\u0022https://ovms.dexters-web.de:6869\u0022);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 181,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "dd604a47-526a-4f26-9c24-db76ca30613c",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "httpClientForAuthentification.BaseAddress = new Uri(\u0022https://ovms.dexters-web.de:6869\u0022);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "httpClientForAuthentification.BaseAddress = new Uri(\u0022https://ovms.dexters-web.de:6869\u0022);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 181,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "ba043ff2-113d-4f0c-b952-e9f6653a7cc3",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "httpClientForAuthentification.Timeout = TimeSpan.FromSeconds(30);",
+              "protected": "M:System.TimeSpan.FromSeconds(System.Double)"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "httpClientForAuthentification.Timeout = TimeSpan.FromSeconds(30);",
+            "protectedSnippet": "M:System.TimeSpan.FromSeconds(System.Double)",
+            "label": "M:System.TimeSpan.FromSeconds(System.Double)",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 175,
+            "column": 20
+          }
+        },
+        {
+          "incidentId": "e4b84448-1bf3-45d9-bff8-825f0db2188f",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var json = r.Content.ReadAsStringAsync().Result;",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "var json = r.Content.ReadAsStringAsync().Result;",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 118,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "765d4472-feb0-4ffc-9834-ce9d806da019",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var json = r2.Content.ReadAsStringAsync().Result;",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "var json = r2.Content.ReadAsStringAsync().Result;",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 87,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "92f9d71c-1b77-46e9-bbc9-f10de20adc11",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var resultContent = result.Content.ReadAsStringAsync().Result;",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "var resultContent = result.Content.ReadAsStringAsync().Result;",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 68,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "c3fae40e-997f-45b9-9ac7-b5068dce620a",
+          "ruleId": "Api.0002",
+          "description": "SecurityProtocolType.Ssl3 has been deprecated and is not supported. ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+              "protected": "F:System.Net.SecurityProtocolType.Ssl3"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+            "protectedSnippet": "F:System.Net.SecurityProtocolType.Ssl3",
+            "label": "F:System.Net.SecurityProtocolType.Ssl3",
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "38e74bd5-ee02-4e1b-8437-b76501712b85",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: .NET 9 obsoletions with custom IDs ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+              "protected": "T:System.Net.ServicePointManager"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+            "protectedSnippet": "T:System.Net.ServicePointManager",
+            "label": "T:System.Net.ServicePointManager",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/obsolete-apis-with-custom-diagnostics.md",
+                "isCustom": false
+              }
+            ],
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "3e53156d-add9-489f-bca4-fce34989ec56",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: .NET 9 obsoletions with custom IDs ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ServicePointManager.ServerCertificateValidationCallback \u002B= (p1, p2, p3, p4) =\u003E true;",
+              "protected": "T:System.Net.ServicePointManager"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "ServicePointManager.ServerCertificateValidationCallback \u002B= (p1, p2, p3, p4) =\u003E true;",
+            "protectedSnippet": "T:System.Net.ServicePointManager",
+            "label": "T:System.Net.ServicePointManager",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/obsolete-apis-with-custom-diagnostics.md",
+                "isCustom": false
+              }
+            ],
+            "line": 47,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "8573fe76-4097-4a5f-a08c-0a516263122b",
+          "ruleId": "Api.0002",
+          "description": "SecurityProtocolType.Ssl3 has been deprecated and is not supported. ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+              "protected": "F:System.Net.SecurityProtocolType.Ssl3"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+            "protectedSnippet": "F:System.Net.SecurityProtocolType.Ssl3",
+            "label": "F:System.Net.SecurityProtocolType.Ssl3",
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ed3f7f1e-707d-413b-b30e-823dbde57e53",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: .NET 9 obsoletions with custom IDs ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+              "protected": "T:System.Net.ServicePointManager"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;",
+            "protectedSnippet": "T:System.Net.ServicePointManager",
+            "label": "T:System.Net.ServicePointManager",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/obsolete-apis-with-custom-diagnostics.md",
+                "isCustom": false
+              }
+            ],
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "fcea7361-becb-489f-bab4-e75ea5a1ebec",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: .NET 9 obsoletions with custom IDs ",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ServicePointManager.ServerCertificateValidationCallback \u002B= (p1, p2, p3, p4) =\u003E true;",
+              "protected": "T:System.Net.ServicePointManager"
+            },
+            "kind": "File",
+            "path": "WebHelper.cs",
+            "snippet": "ServicePointManager.ServerCertificateValidationCallback \u002B= (p1, p2, p3, p4) =\u003E true;",
+            "protectedSnippet": "T:System.Net.ServicePointManager",
+            "label": "T:System.Net.ServicePointManager",
+            "links": [
+              {
+                "title": "API-Dokumentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/obsolete-apis-with-custom-diagnostics.md",
+                "isCustom": false
+              }
+            ],
+            "line": 47,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "c40b8159-cb18-4170-9bb7-a3064924c600",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return ((string)(this[\u0022ExceptionlessServerUrl\u0022]));",
+              "protected": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)"
+            },
+            "kind": "File",
+            "path": "ApplicationSettings.Designer.cs",
+            "snippet": "return ((string)(this[\u0022ExceptionlessServerUrl\u0022]));",
+            "protectedSnippet": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)",
+            "label": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 48,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "3d592fca-623d-464f-8abd-f1c172eede8b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return ((bool)(this[\u0022ProtocolLogging\u0022]));",
+              "protected": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)"
+            },
+            "kind": "File",
+            "path": "ApplicationSettings.Designer.cs",
+            "snippet": "return ((bool)(this[\u0022ProtocolLogging\u0022]));",
+            "protectedSnippet": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)",
+            "label": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 39,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "c10fd282-8afe-4c6c-ba39-26d009d0f4db",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "return ((string)(this[\u0022ExceptionlessApiKey\u0022]));",
+              "protected": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)"
+            },
+            "kind": "File",
+            "path": "ApplicationSettings.Designer.cs",
+            "snippet": "return ((string)(this[\u0022ExceptionlessApiKey\u0022]));",
+            "protectedSnippet": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)",
+            "label": "P:System.Configuration.ApplicationSettingsBase.Item(System.String)",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 30,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "b037f793-1f16-4b6f-ab15-1ac8b9403f94",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ApplicationSettingsBase",
+              "protected": "M:System.Configuration.ApplicationSettingsBase.#ctor"
+            },
+            "kind": "File",
+            "path": "ApplicationSettings.Designer.cs",
+            "snippet": "ApplicationSettingsBase",
+            "protectedSnippet": "M:System.Configuration.ApplicationSettingsBase.#ctor",
+            "label": "M:System.Configuration.ApplicationSettingsBase.#ctor",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 15,
+            "column": 85
+          }
+        },
+        {
+          "incidentId": "0aa184e5-622b-4db3-aabb-ee2cc2ab69f6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3. Add package reference to System.Configuration.ConfigurationManager, 9.0.0-preview.6.24302.3",
+          "projectPath": "OVMS.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ApplicationSettingsBase",
+              "protected": "T:System.Configuration.ApplicationSettingsBase"
+            },
+            "kind": "File",
+            "path": "ApplicationSettings.Designer.cs",
+            "snippet": "ApplicationSettingsBase",
+            "protectedSnippet": "T:System.Configuration.ApplicationSettingsBase",
+            "label": "T:System.Configuration.ApplicationSettingsBase",
+            "properties": {
+              "PackageId": "System.Configuration.ConfigurationManager",
+              "PackageNewVersion": "9.0.0-preview.6.24302.3"
+            },
+            "line": 15,
+            "column": 85
+          }
+        }
+      ],
+      "features": [
+        {
+          "featureId": "LegacyConfiguration",
+          "incidents": [
+            "0aa184e5-622b-4db3-aabb-ee2cc2ab69f6",
+            "b037f793-1f16-4b6f-ab15-1ac8b9403f94",
+            "c10fd282-8afe-4c6c-ba39-26d009d0f4db",
+            "3d592fca-623d-464f-8abd-f1c172eede8b",
+            "c40b8159-cb18-4170-9bb7-a3064924c600"
+          ]
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "F\u00FCr das ausgew\u00E4hlte Zielframework wird ein NuGet-Paketupgrade empfohlen.\n\nStandardm\u00E4\u00DFige .NET-Pakete werden empfohlen, um Versionen zu verwenden, die der Version von .NET entsprechen, auf die das Projekt abzielt.\n\nAuch einige andere Pakete funktionieren f\u00FCr die ausgew\u00E4hlten Zielframeworks bekanntlich besser.",
+      "label": "Ein NuGet-Paketupgrade wird empfohlen",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0003": {
+      "id": "NuGet.0003",
+      "isFeature": false,
+      "description": "Die Funktionalit\u00E4t des NuGet-Pakets ist im Frameworkverweis enthalten.\n\nDas Paket muss entfernt werden.",
+      "label": "Die Funktionalit\u00E4t des NuGet-Pakets ist im Frameworkverweis enthalten",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262609",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0004": {
+      "id": "NuGet.0004",
+      "isFeature": false,
+      "description": "Das NuGet-Paket enth\u00E4lt Sicherheitsrisiken.\n\nF\u00FCr das Paket muss ein Upgrade auf eine neuere Version durchgef\u00FChrt werden, die bekannte Sicherheitsrisiken behandelt.",
+      "label": "Das NuGet-Paket enth\u00E4lt Sicherheitsrisiken",
+      "severity": "Optional",
+      "effort": 1
+    },
+    "NuGet.0005": {
+      "id": "NuGet.0005",
+      "isFeature": false,
+      "description": "Das NuGet-Paket ist veraltet.\n\nWechseln Sie zur Dokumentation, und wenn ein Leitfaden zum Ersetzen der von diesem Paket bereitgestellten Funktionen vorhanden ist.",
+      "label": "Das NuGet-Paket ist veraltet",
+      "severity": "Optional",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262531",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0001": {
+      "id": "Project.0001",
+      "isFeature": false,
+      "description": "Die Projektdatei muss in den SDK-Stil konvertiert werden. Moderne .NET\u00A0Framework-Projekte erfordern eine \u00C4nderung des Projektdateiformats und verwenden das SDK entsprechend der Projektvariante und -funktionalit\u00E4t.",
+      "label": "Die Projektdatei muss in den SDK-Stil konvertiert werden.",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "\u00DCbersicht \u00FCber das Portieren von .NET\u00A0Framework zu .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET-Projekt-SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Die Zielframeworks des Projekts m\u00FCssen in das neue Zielframework ge\u00E4ndert werden, das Sie f\u00FCr dieses Upgrade ausgew\u00E4hlt haben.\n\nW\u00E4hrend des Upgrades wird das Zielframework an die entsprechende Plattform angepasst, falls zutreffend. In einigen F\u00E4llen, f\u00FChrte das Upgrade des Projekts zu mehreren Zielframeworks, wenn es Features verwendete, die jetzt \u00FCber eigene Plattformen in modernen .NET-Frameworks (Windows, iOS, Android usw.) verf\u00FCgen.",
+      "label": "Die Zielframeworks des Projekts m\u00FCssen ge\u00E4ndert werden",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "\u00DCbersicht \u00FCber das Portieren von .NET\u00A0Framework zu .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET-Projekt-SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0003": {
+      "id": "Api.0003",
+      "isFeature": false,
+      "description": "Die API beinhaltet eine Verhaltens\u00E4nderung in der ausgew\u00E4hlten .NET-Version: Code und Bin\u00E4rdateien verhalten sich zur Laufzeit m\u00F6glicherweise anders, ohne dass eine Neukompilierung erforderlich ist, doch das neue Verhalten ist m\u00F6glicherweise unerw\u00FCnscht und erfordert Updates.",
+      "label": "Verhaltens\u00E4nderung bei ausgew\u00E4hlter .NET-Version",
+      "severity": "Potential",
+      "effort": 1
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "Die API ist mit der ausgew\u00E4hlten .NET-Version inkompatibel: erfordert Code\u00E4nderungen, um erfolgreich kompiliert zu werden, wenn eine neue Version als Zielplattform gew\u00E4hlt wird, z.\u00A0B. das Entfernen veralteter APIs oder das \u00C4ndern von Methodensignaturen.",
+      "label": "Die Quelle ist mit der ausgew\u00E4hlten .NET-Version inkompatibel.",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking Changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "LegacyConfiguration": {
+      "id": "LegacyConfiguration",
+      "isFeature": false,
+      "description": "Legacy XML-based configuration system (app.config/web.config) that has been replaced by a more flexible configuration model in .NET Core. The old system was rigid and XML-based. Migrate to Microsoft.Extensions.Configuration with JSON/environment variables; use System.Configuration.ConfigurationManager NuGet package as interim bridge if needed.",
+      "label": "Legacy Configuration System",
+      "severity": "Mandatory",
+      "effort": 2,
+      "links": [
+        {
+          "title": "Configuration in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2341702",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}

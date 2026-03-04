@@ -50,6 +50,7 @@ namespace OVMS
                     catch (Exception ex)
                     {
                         ex.ToExceptionless().Submit();
+                        Logfile.Log("Error initializing car: " + ex.ToString());
                     }
                 }
 
