@@ -210,14 +210,28 @@ namespace OVMS
                         var args = m_msg.Split(',');
                         OVMSVersion = args[0];
                         VIN = args[1];
+                        var filteredVIN = FilterVin(VIN);
+
                         Cartype = args[4];
 
                         car.Log("Version: " + OVMSVersion);
                         car.Log("VIN: " + VIN);
+                        car.Log("filteredVIN: " + filteredVIN);
                         car.Log("Cartype: " + Cartype);
                         car.Log("Provider: " + args[5]);
 
-                        
+                        var row = DBHelper.GetCar(car.CarInDB);
+                        if (row?["vin"]?.ToString().Length < 6)
+                        {
+                            if (filteredVIN.Length < 6)
+                            {
+                                filteredVIN = "UnknownVIN-" + car.CarInDB;                                
+                            }
+
+                            DBHelper.UpdateCarVIN(car.CarInDB, filteredVIN);
+                        }
+
+
                         return;
                     }
                 }
@@ -602,6 +616,14 @@ namespace OVMS
             }
 
             return false;
+        }
+
+        static string FilterVin(string vin)
+        {
+            if (string.IsNullOrWhiteSpace(vin))
+                return string.Empty;
+
+            return new string(vin.Where(char.IsLetterOrDigit).ToArray());
         }
 
         bool isHyundaiVFL

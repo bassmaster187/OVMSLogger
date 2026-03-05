@@ -118,6 +118,15 @@ VALUES(
             return dt;
         }
 
+        public static DataRow GetCar(int id)
+        {
+            DataTable dt = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter("select * from cars where id=@id", DBConnectionstring);
+            da.SelectCommand.Parameters.AddWithValue("@id", id);
+            da.Fill(dt);
+            return dt.Rows[0];
+        }
+
 
         public static DateTime UnixToDateTime(long t)
         {
@@ -1062,6 +1071,27 @@ LIMIT 1", con))
                 car.CreateExceptionlessClient(ex).Submit();
 
                 car.Log(ex.ToString());
+            }
+        }
+
+        internal static void UpdateCarVIN(int carInDB, string VIN)
+        {
+            using (MySqlConnection con = new MySqlConnection(DBConnectionstring))
+            {
+                con.Open();
+                using (MySqlCommand cmd = new MySqlCommand(@"
+                    UPDATE
+                        cars
+                    SET
+                        vin = @vin
+    
+                    WHERE
+                        id = @CarID", con))
+                {
+                    cmd.Parameters.AddWithValue("@vin", VIN);
+                    cmd.Parameters.AddWithValue("@CarID", carInDB);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }
