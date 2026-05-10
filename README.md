@@ -17,6 +17,8 @@ OVMSLogger is a self-hosted logger on Raspberry Pi or Docker. It is based on the
   - Known Problems: Supercharging is not detected
 - Hyundai Ioniq VFL (28kWh) OVMS Firmware 3.3.002 or newer!!!
   - Known Problems: CanBus sometimes is loosing connection to OVMS. We are investigating
+- Nissan Leaf
+- Smart EV
 
 Depending on OVMS signals send to OVMSLogger you will have more or less features. For instance: Cell Temperature are not sent by all cars...
 
